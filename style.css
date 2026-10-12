@@ -144,6 +144,48 @@ button:disabled {
   font-weight: bold;
 }
 
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin-bottom: 12px;
+  padding: 8px;
+  border: 1px solid #a6b4ab;
+  border-radius: 4px;
+  font: inherit;
+}
+
+input:focus-visible {
+  outline: 3px solid #286345;
+  outline-offset: 3px;
+}
+
+#payment-message,
+#new-transaction {
+  margin-top: 16px;
+}
+
+.error-message {
+  color: #a12323;
+}
+
+.success-message {
+  color: #286345;
+}
+
+#receipt-content {
+  overflow-wrap: anywhere;
+}
+
+#receipt-content p + p {
+  margin-top: 8px;
+}
+
 footer {
   padding-bottom: 24px;
   font-size: 0.9rem;

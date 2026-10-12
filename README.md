@@ -4,8 +4,8 @@ A browser-based school supplies ordering project for IT415 practical practice.
 
 ## Current checkpoint
 
-Checkpoint 3 supports adding products, increasing and decreasing quantities,
-removing items, and automatically updating subtotals and the order total.
+Checkpoint 5 reviews and tests the cart, order calculations, cash payment validation,
+change calculation, a digital receipt, and New Transaction reset.
 The interface retains five sections:
 
 - Product List
@@ -14,7 +14,7 @@ The interface retains five sections:
 - Payment Section
 - Receipt Section
 
-Payment validation, receipt generation, and transaction reset are not implemented yet.
+After successful payment, cart and payment controls are disabled until New Transaction.
 
 ## Technologies
 
@@ -48,7 +48,8 @@ row also has a numeric `data-price` attribute used by JavaScript for calculation
 - `style.css` controls colors, spacing, and a two-column layout that becomes
   one column on narrow screens.
 - `script.js` reads the product list, holds the cart in an array, handles cart
-  controls, and redraws the cart and summary after each change.
+  controls, updates calculations, validates cash payment, creates the receipt,
+  and resets the transaction.
 - `README.md` describes the current project and how to run it.
 
 ## Manual verification
@@ -72,3 +73,50 @@ Repeated Add to Cart increases the existing item's quantity. Decrease stops at 1
 Remove deletes the item. Each subtotal is unit price multiplied by quantity.
 The total is the sum of all subtotals. Amounts display with two decimal places.
 The cart is stored only in memory and clears when the page is reloaded.
+
+## Payment and receipt
+
+Payment is prevented for an empty cart (the approved implementation decision).
+Blank, non-numeric, non-finite, negative, and insufficient payments are rejected.
+Cash input uses increments of ₱0.01. Change is amount paid minus total, rounded
+to centavos. Amounts whose centavo value exceeds JavaScript's safe integer range
+are rejected to prevent incorrect calculations. A receipt appears only after successful payment and includes each
+item's quantity, unit price, subtotal, total, payment, change, and confirmation.
+The reference is `SS-<timestamp in milliseconds>-<session counter>`.
+Date/time uses the browser's local clock and locale. References are simple
+local identifiers; no transaction history is stored.
+
+New Transaction clears the cart, calculations, payment, messages, and receipt,
+then enables controls again. All six products remain available.
+
+## Manual payment tests
+
+Build the ₱102.00 example order: Ballpen ×2, Notebook ×2, Eraser ×1.
+
+- Try blank, negative, and ₱100.00 payment: an error should appear with no receipt.
+- Try invalid numeric input if your browser permits it: reject it with no receipt.
+  JavaScript also checks invalid values even when the numeric input blocks text.
+- Pay ₱102.00: accept with ₱0.00 change and all required receipt details.
+- Select New Transaction: cart empty, total ₱0.00, input/messages/receipt cleared,
+  all products still visible, and controls enabled.
+- Rebuild the order and pay ₱150.00: accept with ₱48.00 change.
+- After payment, cart controls and payment are disabled; the receipt stays unchanged.
+- Start a new transaction and confirm payment with an empty cart: reject it.
+
+## Basic application flow
+
+Choose products, adjust quantities, review the total, enter cash, and confirm
+payment. Read the receipt, then select New Transaction for the next customer.
+
+## Checkpoint 5 verification
+
+Executable checks used the actual JavaScript with a simulated DOM, without
+adding project dependencies. Product data, cart actions, quantities, subtotals,
+totals, all payment cases, receipt fields, reset, and subsequent transactions
+passed. An additional test reproduced a payment overflow: `1e308` previously
+generated infinite change. Validation now rejects amounts too large for safe
+centavo calculations; the regression check and complete sequence passed again.
+
+These checks do not verify browser rendering, native numeric-input behavior,
+keyboard navigation, or the browser console. The manual checks above remain
+necessary. No browser verification is claimed.

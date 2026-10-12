@@ -47,6 +47,7 @@
 
     <section class="panel cart" aria-labelledby="cart-heading">
       <h2 id="cart-heading">Shopping Cart</h2>
+      <p>Minimum quantity is 1. Use Remove to delete an item.</p>
       <div id="cart-items"></div>
     </section>
 
@@ -57,17 +58,24 @@
 
     <section class="panel" aria-labelledby="payment-heading">
       <h2 id="payment-heading">Payment Section</h2>
-      <p>Cash payment and change will be handled here.</p>
+      <label for="amount-paid">Amount paid (₱)</label>
+      <p id="payment-help">Enter cash in pesos, using up to two decimal places.</p>
+      <input id="amount-paid" type="number" min="0" step="0.01" inputmode="decimal" aria-describedby="payment-help payment-message">
+      <button id="confirm-payment" type="button">Confirm Payment</button>
+      <p id="payment-message" role="status" aria-live="polite"></p>
     </section>
 
     <section class="panel receipt" aria-labelledby="receipt-heading">
       <h2 id="receipt-heading">Receipt Section</h2>
-      <p>A digital receipt will appear here after a successful payment.</p>
+      <p id="receipt-placeholder">A digital receipt will appear here after a successful payment.</p>
+      <div id="receipt-content" hidden></div>
+      <p id="reset-help">New Transaction clears the current cart, payment, and receipt.</p>
+      <button id="new-transaction" type="button" aria-describedby="reset-help">New Transaction</button>
     </section>
   </main>
 
   <footer>
-    <p>Checkpoint 3: Cart and calculations available. Payment and receipts are not available yet.</p>
+    <p>Student Supplies Ordering System · Cash payments</p>
   </footer>
 </body>
 </html>
