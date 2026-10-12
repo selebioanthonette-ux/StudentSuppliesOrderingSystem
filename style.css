@@ -1,0 +1,80 @@
+/* Basic page styling. No external fonts or libraries are needed. */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f4f6f5;
+  color: #24382d;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page-header,
+.layout,
+footer {
+  width: min(100% - 32px, 1000px);
+  margin-inline: auto;
+}
+
+.page-header {
+  padding: 32px 0 24px;
+  border-bottom: 2px solid #286345;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0;
+  color: #526159;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-block: 24px;
+}
+
+.panel {
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #cbd5cf;
+  border-radius: 8px;
+}
+
+.products,
+.cart {
+  min-height: 180px;
+}
+
+.receipt {
+  grid-column: 1 / -1;
+}
+
+footer {
+  padding-bottom: 24px;
+  font-size: 0.9rem;
+}
+
+/* Stack sections on smaller screens so the text stays readable. */
+@media (max-width: 640px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+}
