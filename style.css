@@ -89,15 +89,59 @@ p {
   font-variant-numeric: tabular-nums;
 }
 
-.product-row button {
+button {
   min-height: 44px;
   padding: 8px 12px;
   border: 1px solid #a6b4ab;
   border-radius: 4px;
+  background: #286345;
+  color: #ffffff;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #1d4b34;
+}
+
+button:focus-visible {
+  outline: 3px solid #286345;
+  outline-offset: 3px;
+}
+
+button:disabled {
   background: #e8eeea;
   color: #526159;
-  font: inherit;
   cursor: not-allowed;
+}
+
+.cart-row {
+  padding-block: 16px;
+  border-top: 1px solid #cbd5cf;
+}
+
+.cart-row h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.cart-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.cart-controls button {
+  min-width: 44px;
+}
+
+.order-total {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #cbd5cf;
+  color: #24382d;
+  font-weight: bold;
 }
 
 footer {
