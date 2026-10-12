@@ -1,11 +1,19 @@
 # Student Supplies Ordering System
 
-A browser-based school supplies ordering project for IT415 practical practice.
+A browser-based ordering system for a small school supplies shop near campus,
+created for IT415 practical practice. Customers select supplies, manage their
+cart, pay with cash, and view a digital receipt.
 
-## Current checkpoint
+## Main features
 
-Checkpoint 5 reviews and tests the cart, order calculations, cash payment validation,
-change calculation, a digital receipt, and New Transaction reset.
+- Display all six school supplies and their prices.
+- Add products to the cart; repeated adds increase the existing quantity.
+- Increase or decrease quantities, with a minimum of 1, or remove an item.
+- Automatically calculate item subtotals and the total amount.
+- Validate cash payment and calculate change.
+- Display a digital receipt after successful payment.
+- Clear the current transaction using New Transaction.
+
 The interface retains five sections:
 
 - Product List
@@ -38,8 +46,8 @@ row also has a numeric `data-price` attribute used by JavaScript for calculation
 ## How to run
 
 1. Open `index.html` directly in a normal web browser.
-2. Confirm that all six products, their prices, and Add to Cart buttons appear.
-3. Resize the browser to check the layout on a narrow screen.
+2. Keep `index.html`, `style.css`, and `script.js` together in the project folder.
+3. No terminal commands or server are needed. JavaScript must be enabled.
 
 ## Files and basic structure
 
@@ -120,3 +128,13 @@ centavo calculations; the regression check and complete sequence passed again.
 These checks do not verify browser rendering, native numeric-input behavior,
 keyboard navigation, or the browser console. The manual checks above remain
 necessary. No browser verification is claimed.
+
+## Submission documentation
+
+- [AI interaction records](docs/AI_USAGE.md): two actual interactions, with
+  student evaluation and modification fields explicitly pending.
+- [Submission and screenshot checklist](docs/SUBMISSION_CHECKLIST.md): required
+  evidence to capture before submission.
+
+The records do not claim student testing, personal evaluations, or screenshots
+that have not been provided.
